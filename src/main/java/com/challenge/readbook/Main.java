@@ -1,13 +1,14 @@
 package com.challenge.readbook;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ReadbookApplication {
+public class Main {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ReadbookApplication.class, args);
+		SpringApplication.run(Main.class, args);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.challenge.readbook.repository;
 
+import com.challenge.readbook.DTOs.LoanDTO;
 import com.challenge.readbook.entitys.LoanEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,5 +1,6 @@
 package com.challenge.readbook.entitys;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,18 +9,23 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "tb_reader")
 public class ReaderEntity {
 
      @Id
      @GeneratedValue(strategy = GenerationType.SEQUENCE)
-     String readerId;
+     @JsonProperty("readerId")
+    private Long readerId;
 
-     String cpf;
+     @JsonProperty("cpf")
+     private String cpf;
 
      @Column(nullable = false)
-     String name;
+     @JsonProperty("name")
+     private String name;
 
      @Column(nullable = false)
-     String address;
+     @JsonProperty("address")
+     private String address;
 
 }

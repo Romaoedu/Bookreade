@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -16,22 +17,27 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "tb_book")
 public class BookEntity {
 
      @Id
      @GeneratedValue(strategy = GenerationType.SEQUENCE)
-     long bookId;
+     private long bookId;
 
-     String description;
+     private String description;
 
-     String resume;
+     private String resume;
 
-     Category category;
+     private Category category;
 
-     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-     LocalDateTime publicationDate;
+     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+     private LocalDateTime publicationDate;
 
      @OneToOne(cascade = CascadeType.ALL)
      @JoinColumn(name = "author_id")
-     AuthorEntity author;
+     private AuthorEntity author;
+
+     @OneToOne(cascade = CascadeType.ALL)
+     @JoinColumn(name = "exemplar_id")
+     private ExemplarEntity exemplar;
 }

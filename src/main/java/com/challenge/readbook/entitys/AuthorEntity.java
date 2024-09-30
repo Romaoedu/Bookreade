@@ -12,12 +12,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name = "tb_author")
-
 public class AuthorEntity {
 
    @Id
    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-   Long authorId;
-   String name;
+   private Long authorId;
+   private String name;
 
 }

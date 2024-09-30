@@ -1,6 +1,7 @@
 package com.challenge.readbook.entitys;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,21 +15,21 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "tb_exemplar")
 public class ExemplarEntity {
 
      @Id
      @GeneratedValue(strategy = GenerationType.SEQUENCE)
-     Long exemplarId;
+     @JsonProperty("exemplarId")
+    private Long exemplarId;
 
-     Long code;
+     @JsonProperty("code")
+    private Long code;
 
-     String localization;
+     @JsonProperty("localization")
+    private String localization;
 
      @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-     LocalDateTime entryDate;
-
-     @OneToOne(cascade = CascadeType.ALL)
-     @JoinColumn(name = "book_id" )
-     BookEntity book;
+    private LocalDateTime entryDate;
 
 }

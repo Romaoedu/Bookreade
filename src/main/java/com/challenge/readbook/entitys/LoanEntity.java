@@ -1,6 +1,7 @@
 package com.challenge.readbook.entitys;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,21 +21,23 @@ public class LoanEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    Long LoanId;
+   private Long LoanId;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "readerModel_id")
-    ReaderEntity readerModel;
+    @JoinColumn(name = "reader_id")
+    @JsonProperty("readerModel")
+    private ReaderEntity readerModel;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "exemplar_id")
-    ExemplarEntity exemplar;
+    @JsonProperty("exemplar")
+    private ExemplarEntity exemplar;
 
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    LocalDateTime withdrawalDate;
+    private LocalDateTime withdrawalDate;
 
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    LocalDateTime returnDate;
+    private LocalDateTime returnDate;
 
 
 }
